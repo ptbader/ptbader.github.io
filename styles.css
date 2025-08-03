@@ -10,6 +10,10 @@
   --shadow: 0 12px 36px rgba(0,0,0,.25);
 }
 
+.hero {
+  background: url('f35.jpg') center/cover no-repeat;
+}
+
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
 html{ scroll-behavior: smooth; }
