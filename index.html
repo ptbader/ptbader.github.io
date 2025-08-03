@@ -2,327 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
-  <title>Pierce Bader — Portfolio</title>
-  <meta name="description" content="Portfolio of Pierce Bader — projects, experience, and contact." />
-
-  <!-- Optional: clean sans font similar to modern portfolios -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --page-max: 1040px;
-      --pad: clamp(16px, 2.2vw, 28px);
-      --accent: #0a66c2;             /* link/accent (LinkedIn-like) */
-      --ink: #0b0b0b;                 /* primary text */
-      --muted: #6b7280;               /* muted text */
-      --card: #ffffff;                /* cards */
-      --bg: #fafafa;                  /* page background */
-      --ring: rgba(10, 102, 194, .25);
-      --shadow: 0 10px 30px rgba(0,0,0,.06);
-      --hairline: rgba(0,0,0,.08);
-    }
-
-    /* Reset-ish */
-    *, *::before, *::after{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-    body{
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    img{ max-width: 100%; display: block; }
-
-    .container{
-      width: min(var(--page-max), 92vw);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-
-    /* Top nav — compact, minimal */
-    .topbar{
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(255,255,255,.9);
-      backdrop-filter: saturate(120%) blur(10px);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .nav-wrap{
-      display: flex; align-items: center; gap: 16px;
-      min-height: 68px;
-    }
-    .brand{
-      font-weight: 800; letter-spacing: .2px;
-      text-decoration: none; color: var(--ink);
-      padding: 8px 10px;
-      border: 1px solid transparent;
-    }
-    .nav{
-      margin-left: auto; display: flex; gap: 8px; align-items: center;
-    }
-    .nav a{
-      color: var(--ink); text-decoration: none; font-weight: 600;
-      padding: 10px 12px; border-radius: 8px;
-    }
-    .nav a:hover{ background: rgba(0,0,0,.04); }
-    .cta{
-      color: #fff; background: var(--accent);
-      border: 1px solid color-mix(in oklab, var(--accent), black 10%);
-      padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 600;
-      box-shadow: 0 8px 16px rgba(10,102,194,.15);
-    }
-    .cta:hover{ transform: translateY(-1px); }
-
-    /* Hero */
-    .hero{
-      padding: clamp(32px, 6vw, 80px) 0;
-      display: grid; gap: 16px;
-    }
-    .kicker{
-      color: var(--muted); font-weight: 600; letter-spacing: .3px;
-    }
-    h1{
-      font-size: clamp(32px, 6.2vw, 56px);
-      line-height: 1.08;
-      margin: 0 0 10px 0;
-    }
-    .typing{
-      display: inline-block;
-      border-right: 2px solid var(--accent); /* caret */
-      white-space: nowrap; overflow: hidden;
-      /* the width will be animated in JS; CSS caret blinks: */
-      animation: blink 1s steps(1) infinite;
-    }
-    @keyframes blink { 50% { border-color: transparent; } }
-
-    .sub{
-      color: var(--muted);
-      font-size: clamp(16px, 2.2vw, 18px);
-      margin-top: 2px;
-    }
-
-    /* Section header */
-    .section-h{
-      font-size: clamp(22px, 3vw, 28px);
-      margin: 34px 0 8px;
-    }
-    .hairline{ border-top: 1px solid var(--hairline); margin: 8px 0 24px; }
-
-    /* Projects grid */
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--hairline);
-      box-shadow: var(--shadow);
-      border-radius: 14px;
-      overflow: hidden;
-      display: grid;
-    }
-    .thumb{ aspect-ratio: 16/10; background: #e5e7eb; }
-    .card-body{ padding: 14px; }
-    .card h3{ margin: 8px 0 6px; font-size: 18px; }
-    .tags{ color: var(--muted); font-size: 14px; }
-
-    .link{
-      color: var(--accent); font-weight: 600; text-decoration: none;
-    }
-    .link:hover{ text-decoration: underline; }
-
-    /* About */
-    .about{
-      display: grid; gap: 10px;
-      background: #fff; border: 1px solid var(--hairline); box-shadow: var(--shadow);
-      border-radius: 16px; padding: clamp(16px, 3vw, 24px);
-    }
-
-    /* Contact */
-    .contact{
-      margin: 40px 0 70px;
-      display: grid; gap: 10px;
-    }
-    .pill{
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 14px; border: 1px solid var(--hairline); border-radius: 999px;
-      background: #fff; box-shadow: var(--shadow);
-    }
-    .pill a{ color: var(--accent); text-decoration: none; font-weight: 600; }
-
-    /* Footer */
-    footer{
-      color: var(--muted);
-      border-top: 1px solid var(--hairline);
-      padding: 22px 0 50px;
-      text-align: center;
-    }
-
-    /* Smooth scroll */
-    html{ scroll-behavior: smooth; }
-    /* Reduce motion preference */
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior: auto; }
-      .cta, .nav a { transition: none; }
-      .typing{ animation: none; border-right-color: var(--accent); }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PT.BADER — Pierce Bader</title>
+  <meta name="description" content="Portfolio of Pierce Bader: projects, resume, gallery, and contact." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Optional strong, modern sans (keeps a stark feel) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Bar — permanently black, white accents, 90° angles -->
   <header class="topbar">
     <div class="container nav-wrap">
-      <a class="brand" href="#top">PB</a>
+      <a class="brand" href="index.html">PT.BADER</a>
       <nav class="nav" aria-label="Primary">
-        <a href="#work">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Contact</a>
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="contacts.html">Contacts</a>
       </nav>
+      <input id="nav-toggle" type="checkbox" aria-label="Toggle navigation">
+      <label for="nav-toggle" class="hamburger" aria-hidden="true"><span></span><span></span><span></span></label>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="container hero" aria-labelledby="intro">
-      <p class="kicker">Portfolio • 2022–2025</p>
-      <h1 id="intro">I’m <strong>Pierce Bader</strong> — <span class="typing" id="typing"></span></h1>
-      <p class="sub">
-        A concise line about who you are and what you like to build. Keep it short and specific.
-      </p>
+      <h1 id="intro" class="hero-title">
+        <span class="hero-prefix">Pierce Bader:</span>
+        <span class="typing" id="typing"></span>
+      </h1>
+
+      <!-- Static placeholder image (replacing video) -->
+      <figure class="hero-media">
+        <img
+          src="https://via.placeholder.com/1600x900.png?text=Hero+Placeholder"
+          alt="Hero placeholder image"
+          width="1600" height="900" loading="eager" decoding="async"
+        />
+      </figure>
     </section>
 
-    <!-- Work -->
-    <section id="work" class="container">
-      <h2 class="section-h">Selected Work</h2>
-      <div class="hairline"></div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="thumb">
-            <img src="https://via.placeholder.com/1600x1000" alt="Project preview 1">
-          </div>
-          <div class="card-body">
-            <h3>Project Title One</h3>
-            <p class="tags">CAD/CAM • DFM • Prototyping</p>
-            <a class="link" href="#">View case study →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb">
-            <img src="https://via.placeholder.com/1600x1000" alt="Project preview 2">
-          </div>
-          <div class="card-body">
-            <h3>Project Title Two</h3>
-            <p class="tags">Controls • Simulation • Validation</p>
-            <a class="link" href="#">View case study →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb">
-            <img src="https://via.placeholder.com/1600x1000" alt="Project preview 3">
-          </div>
-          <div class="card-body">
-            <h3>Project Title Three</h3>
-            <p class="tags">Robotics • Rapid Iteration</p>
-            <a class="link" href="#">View case study →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="container" style="margin-top: 40px;">
-      <h2 class="section-h">About me</h2>
-      <div class="hairline"></div>
-      <div class="about">
-        <p>
-          I’m Pierce, a mechanical engineering student focused on building practical systems
-          and learning by making. This portfolio is a living collection of recent work—feel free
-          to look around and reach out if something sparks your interest.
-        </p>
-        <p>
-          Areas of interest: manufacturing, robotics, controls, and product design.
-        </p>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container contact">
-      <h2 class="section-h">Let’s do great things together.</h2>
-      <div class="hairline"></div>
-      <div class="pill">
-        <span>📬</span>
-        <a href="mailto:pierce.bader@example.com">pierce.bader@example.com</a>
-      </div>
-      <div class="pill" style="margin-top:10px;">
-        <span>💼</span>
-        <a href="#" rel="noreferrer">LinkedIn</a>
+    <!-- Optional: quick intro band -->
+    <section class="container band">
+      <div class="band-grid">
+        <div class="band-item">
+          <h2 class="band-h">Build. Test. Iterate.</h2>
+          <p>Mechanical/Aerospace projects with a focus on controls, manufacturing, and robust design.</p>
+        </div>
+        <div class="band-item">
+          <h2 class="band-h">Selected Work</h2>
+          <p>See a handful of representative projects and case notes.</p>
+          <a class="link" href="projects.html">Explore Projects →</a>
+        </div>
+        <div class="band-item">
+          <h2 class="band-h">Get in Touch</h2>
+          <p>Open to internships, research, and collaborative builds.</p>
+          <a class="link" href="contacts.html">Contact →</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="container">
-    © <span id="year"></span> Pierce Bader
+  <footer class="container footer">
+    © <span id="year"></span> PT.BADER
   </footer>
 
-  <!-- Typing effect (vanilla JS, accessible & looped) -->
+  <!-- Typing effect -->
   <script>
     const phrases = [
-      "a mechanical engineering student",
-      "a robotics builder",
-      "into CAD/CAM & DFM",
-      "learning by making"
+      "Columbia University Student",
+      "Aerospace Engineer",
+      "Persistent Innovator",
+      "Bagel Enthusiast"
     ];
-
     const el = document.getElementById("typing");
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    let p = 0, i = 0, deleting = false, pause = 900, typeSpeed = 38, deleteSpeed = 22;
+    let p = 0, i = 0, deleting = false;
+    const pause = 1000, typeSpeed = 42, deleteSpeed = 22;
 
     function type() {
-      const text = phrases[p];
+      const t = phrases[p];
       if (!deleting) {
-        el.textContent = text.slice(0, i + 1);
+        el.textContent = t.slice(0, i + 1);
         i++;
-        if (i === text.length) {
-          deleting = true;
-          setTimeout(type, pause);
-          return;
-        }
-        setTimeout(type, typeSpeed + Math.random() * 100);
+        if (i === t.length) { deleting = true; return setTimeout(type, pause); }
+        return setTimeout(type, typeSpeed + Math.random() * 80);
       } else {
-        el.textContent = text.slice(0, i - 1);
+        el.textContent = t.slice(0, i - 1);
         i--;
-        if (i === 0) {
-          deleting = false;
-          p = (p + 1) % phrases.length;
-          setTimeout(type, 300);
-          return;
-        }
-        setTimeout(type, deleteSpeed);
+        if (i === 0) { deleting = false; p = (p + 1) % phrases.length; return setTimeout(type, 350); }
+        return setTimeout(type, deleteSpeed);
       }
     }
-
-    // Respect reduced motion
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!media.matches) {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       type();
     } else {
-      el.textContent = phrases[0]; // static fallback
+      el.textContent = phrases[0];
+      el.classList.remove("caret");
     }
   </script>
 </body>
