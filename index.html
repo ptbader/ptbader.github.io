@@ -1,36 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ptbader</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home – My Website</title>
   <style>
+    /* Make the full-page backdrop */
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
       margin: 0;
-      padding: 50px;
-      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      /* if you want a background image, swap in url('…') here */
+      background: #f0f0f0;
     }
-    h1 {
-      color: #333;
+    /* Glassy overlay */
+    .glass {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      z-index: -1;
     }
-    p {
-      color: #555;
-      font-size: 18px;
+    /* Top navigation bar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 2em;
+      background: #B22222;              /* firebrick red */
+      border-bottom: 4px solid #FFD700; /* gold accent */
+      border-radius: 0 0 12px 12px;     /* round bottom corners */
     }
-    a {
-      color: #007bff;
+    .navbar a {
+      margin-right: 1.5em;
       text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      transition: opacity 0.2s;
     }
-    a:hover {
-      text-decoration: underline;
+    .navbar a:last-child {
+      margin-right: 0;
+    }
+    .navbar a:hover {
+      opacity: 0.7;
+    }
+    /* Main content area */
+    .container {
+      max-width: 900px;
+      margin: 5em auto;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(6px);
+      padding: 2em;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .container h1 {
+      margin-top: 0;
     }
   </style>
 </head>
 <body>
-  <h1>welcome to ptbader</h1>
-  <p>aerospace engineer, columbia university student, reluctant new jersey resident</p>
-  <p><a href="https://github.com/ptbader">Visit my GitHub profile</a></p>
+  <div class="glass"></div>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contacts.html">Contacts</a>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to My Website</h1>
+    <p>This is your home page. Use the navigation above to hop around—About, Projects, Resume, Gallery, Contacts.</p>
+  </div>
 </body>
 </html>
