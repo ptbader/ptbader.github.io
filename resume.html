@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume • Glassy Site</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">GlassySite</a>
+
+      <input id="nav-toggle" type="checkbox" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="hamburger"><span></span><span></span><span></span></label>
+
+      <nav class="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link active" href="resume.html">Resume</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="contacts.html">Contacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="glass card">
+      <h1>Resume</h1>
+      <p>Add your experience, education, and skills. You can link a PDF:</p>
+      <p><a class="link-accent" href="assets/YourName-Resume.pdf">Download PDF →</a></p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> GlassySite. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
