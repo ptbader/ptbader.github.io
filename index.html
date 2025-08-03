@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pierce Bader</title>
   <style>
-    /* Global Styles */
+    /* Reset & globals */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: Arial, sans-serif; color: #fff; }
 
-    /* Navigation Bar */
+    /* Nav container */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #000;
       display: flex;
       align-items: center;
       padding: 1rem 2rem;
+      background-color: #000;
+      border-bottom: 2px solid #fff; /* bottom bar */
       z-index: 100;
     }
+
+    /* Logo */
     nav .logo {
-      font-size: 2.25rem; /* 50% bigger */
+      font-size: 2.25rem;
       font-weight: bold;
-      text-decoration: none;
       color: #fff;
-      margin-right: 2rem;
+      text-decoration: none;
     }
+
+    /* Vertical divider */
+    nav .divider {
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+      margin: 0 2rem;
+    }
+
+    /* Links container */
     .nav-links {
       display: flex;
-      flex-grow: 1;
+      gap: 2rem;
     }
+
+    /* Individual links */
     nav .nav-links a {
       position: relative;
       display: flex;
       align-items: center;
       text-transform: uppercase;
-      margin-right: 0;
-      padding: 0.75rem 1rem;
       text-decoration: none;
       color: #fff;
       font-size: 1rem;
       font-weight: 500;
-      border-right: 3px solid #fff;
+      padding: 0.5rem 0;
       user-select: none;
     }
-    nav .nav-links a:last-child {
-      border-right: none;
-    }
+
+    /* Toggle symbol */
     nav .nav-links a .toggle {
       margin-left: 0.4rem;
       font-size: 0.8rem;
     }
-    /* Underline hover + active */
+
+    /* Hover & active underline */
     nav .nav-links a::after {
       content: '';
       position: absolute;
@@ -60,22 +72,19 @@
       bottom: -2px;
       width: 0;
       height: 2px;
-      background: #fff;
+      background-color: #fff;
       transition: width 0.3s ease;
     }
     nav .nav-links a:hover::after,
     nav .nav-links a.active::after {
       width: 100%;
     }
-    nav .nav-links a:focus {
-      outline: none;
-    }
 
     /* Hero Section */
     .hero {
-      position: relative;
+      margin-top: calc(1rem + 2rem + 2px); /* account for nav padding + bottom border */
       width: 100%;
-      height: 100vh;
+      height: calc(100vh - (2rem + 2px));
       background: url('f35.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
@@ -98,6 +107,7 @@
 <body>
   <nav>
     <a href="#" class="logo">PTBADER</a>
+    <div class="divider"></div>
     <div class="nav-links">
       <a href="#about">About <span class="toggle">+</span></a>
       <a href="#projects">Projects <span class="toggle">+</span></a>
