@@ -22,7 +22,6 @@
       z-index: 100;
     }
     nav .logo {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 2.25rem;
       font-weight: bold;
       color: #fff;
@@ -38,6 +37,7 @@
     .nav-links {
       display: flex;
       gap: 2rem;
+      margin-left: auto; /* right-justify links */
     }
     .nav-links a {
       position: relative;
@@ -48,7 +48,6 @@
       font-size: 1rem;
       font-weight: 500;
       padding: 0.5rem 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     .nav-links a .toggle {
       margin-left: 0.4rem;
@@ -84,7 +83,6 @@
       background: linear-gradient(-45deg, #001f3f, #b30000, #001f3f, #b30000);
       background-size: 400% 400%;
       animation: gradientBG 30s ease infinite;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     .hero::before {
       content: '';
@@ -108,10 +106,9 @@
       margin: 2rem 0 0 5%;
       z-index: 1;
       max-width: 75%;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     .typing-container h1 {
-      font-size: 4rem;
+      font-size: 3rem; /* smaller text */
       line-height: 1.2;
       margin-bottom: 0;
     }
@@ -121,9 +118,8 @@
     .typing-container #typing {
       display: inline;
       border-right: 4px solid #fff;
-      padding-left: 0.2em;
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: normal; /* allow wrapping */
+      overflow-wrap: break-word; /* wrap long blurbs */
     }
 
   </style>
@@ -144,7 +140,7 @@
   <section class="hero">
     <div class="typing-container">
       <h1>
-        <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
+        <span class="static">Pierce is studying mechanical engineering at Columbia University and</span>
         <span id="typing"></span>
       </h1>
     </div>
@@ -170,7 +166,7 @@
         currentText = fullText.substring(0, charIndex);
         if (charIndex === fullText.length) {
           isDeleting = true;
-          setTimeout(type, 4000);  /* linger longer */
+          setTimeout(type, 4000);
           typingElement.textContent = currentText;
           return;
         }
@@ -185,7 +181,7 @@
         }
       }
       typingElement.textContent = currentText;
-      setTimeout(type, isDeleting ? 50 : 80);  /* faster typing */
+      setTimeout(type, isDeleting ? 50 : 80);
     }
 
     document.addEventListener('DOMContentLoaded', type);
