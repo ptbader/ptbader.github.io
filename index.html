@@ -9,7 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: Arial, sans-serif; color: #fff; }
 
-    /* Nav container */
+    /* Navigation Bar */
     nav {
       position: fixed;
       top: 0;
@@ -18,34 +18,26 @@
       align-items: center;
       padding: 1rem 2rem;
       background-color: #000;
-      border-bottom: 2px solid #fff; /* bottom bar */
+      border-bottom: 2px solid #fff;
       z-index: 100;
     }
-
-    /* Logo */
     nav .logo {
       font-size: 2.25rem;
       font-weight: bold;
       color: #fff;
       text-decoration: none;
     }
-
-    /* Vertical divider */
     nav .divider {
       width: 2px;
       height: 100%;
       background-color: #fff;
       margin: 0 2rem;
     }
-
-    /* Links container */
     .nav-links {
       display: flex;
       gap: 2rem;
     }
-
-    /* Individual links */
-    nav .nav-links a {
+    .nav-links a {
       position: relative;
       display: flex;
       align-items: center;
@@ -55,17 +47,12 @@
       font-size: 1rem;
       font-weight: 500;
       padding: 0.5rem 0;
-      user-select: none;
     }
-
-    /* Toggle symbol */
-    nav .nav-links a .toggle {
+    .nav-links a .toggle {
       margin-left: 0.4rem;
       font-size: 0.8rem;
     }
-
-    /* Hover & active underline */
-    nav .nav-links a::after {
+    .nav-links a::after {
       content: '';
       position: absolute;
       left: 0;
@@ -75,32 +62,69 @@
       background-color: #fff;
       transition: width 0.3s ease;
     }
-    nav .nav-links a:hover::after,
-    nav .nav-links a.active::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
 
-    /* Hero Section */
+    /* Hero Section with lava-lamp blobs */
     .hero {
-      margin-top: calc(1rem + 2rem + 2px); /* account for nav padding + bottom border */
+      position: relative;
       width: 100%;
-      height: calc(100vh - (2rem + 2px));
-      background: url('f35.jpg') center/cover no-repeat;
+      height: 100vh;
+      padding-top: 6rem; /* space for nav */
+      background: rgba(0,0,0,0.6);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       text-align: center;
     }
-    .hero h1 {
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,0,0,0.4);
+      animation: blobMove 10s infinite alternate ease-in-out;
+    }
+    .blob:nth-child(1) {
+      width: 300px; height: 300px;
+      top: 10%; left: 15%;
+      animation-delay: 0s;
+    }
+    .blob:nth-child(2) {
+      width: 200px; height: 200px;
+      top: 40%; left: 60%;
+      animation-delay: 3s;
+    }
+    .blob:nth-child(3) {
+      width: 250px; height: 250px;
+      top: 70%; left: 30%;
+      animation-delay: 6s;
+    }
+    @keyframes blobMove {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(50px,-30px) scale(1.2); }
+      100% { transform: translate(-20px,40px) scale(0.8); }
+    }
+
+    /* Typing Text */
+    h1 {
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
     #typing {
       border-right: 2px solid #fff;
       padding-left: 0.2em;
       white-space: nowrap;
       overflow: hidden;
+    }
+
+    /* Passport Photo */
+    .passport {
+      margin-top: 4rem;
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
   </style>
 </head>
@@ -119,6 +143,10 @@
 
   <section class="hero">
     <h1>Pierce Bader: <span id="typing"></span></h1>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <img src="PassportPhoto.jpg" alt="Passport Photo" class="passport" />
   </section>
 
   <script>
@@ -128,35 +156,22 @@
       "Persistent Innovator",
       "Bagel Enthusiast"
     ];
-    let partIndex = 0, charIndex = 0;
-    let currentText = '';
-    let isDeleting = false;
+    let partIndex = 0, charIndex = 0, isDeleting = false, currentText = '';
     const typingElement = document.getElementById('typing');
-
     function type() {
       const fullText = blurbs[partIndex];
       if (!isDeleting) {
         currentText = fullText.substring(0, charIndex + 1);
         charIndex++;
-        if (currentText === fullText) {
-          isDeleting = true;
-          setTimeout(type, 2000);
-          return;
-        }
+        if (currentText === fullText) { isDeleting = true; setTimeout(type, 2000); return; }
       } else {
         currentText = fullText.substring(0, charIndex - 1);
         charIndex--;
-        if (currentText === '') {
-          isDeleting = false;
-          partIndex = (partIndex + 1) % blurbs.length;
-          setTimeout(type, 500);
-          return;
-        }
+        if (currentText === '') { isDeleting = false; partIndex = (partIndex + 1) % blurbs.length; setTimeout(type, 500); return; }
       }
       typingElement.textContent = currentText;
       setTimeout(type, isDeleting ? 50 : 100);
     }
-
     document.addEventListener('DOMContentLoaded', type);
   </script>
 </body>
