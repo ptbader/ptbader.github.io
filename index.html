@@ -111,7 +111,7 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     .typing-container h1 {
-      font-size: 3rem; /* smaller size */
+      font-size: 4rem;
       line-height: 1.2;
       margin-bottom: 0;
     }
@@ -119,9 +119,11 @@
       display: inline;
     }
     .typing-container #typing {
-      display: block; /* wrap on new line */
+      display: inline;
       border-right: 4px solid #fff;
       padding-left: 0.2em;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
   </style>
@@ -142,8 +144,7 @@
   <section class="hero">
     <div class="typing-container">
       <h1>
-        <span class="static">Pierce is studying mechanical engineering at Columbia University and</span>
-        <br>
+        <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
         <span id="typing"></span>
       </h1>
     </div>
@@ -169,7 +170,7 @@
         currentText = fullText.substring(0, charIndex);
         if (charIndex === fullText.length) {
           isDeleting = true;
-          setTimeout(type, 4000);
+          setTimeout(type, 4000);  /* linger longer */
           typingElement.textContent = currentText;
           return;
         }
@@ -184,7 +185,7 @@
         }
       }
       typingElement.textContent = currentText;
-      setTimeout(type, isDeleting ? 50 : 80);
+      setTimeout(type, isDeleting ? 50 : 80);  /* faster typing */
     }
 
     document.addEventListener('DOMContentLoaded', type);
