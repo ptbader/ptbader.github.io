@@ -105,7 +105,7 @@
 
     /* Typing Text Block */
     .typing-container {
-      margin: 4rem 0 0 5%;
+      margin: 2rem 0 0 5%;
       z-index: 1;
       max-width: 75%;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -144,7 +144,7 @@
   <section class="hero">
     <div class="typing-container">
       <h1>
-        <span class="static">I’m Pierce – a mechanical engineering student at Columbia University and </span>
+        <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
         <span id="typing"></span>
       </h1>
     </div>
@@ -152,9 +152,10 @@
 
   <script>
     const blurbs = [
-      "aerospace enthusiast",
-      "persistent innovator",
-      "bagel enthusiast"
+      "is building UAVs",
+      "is obsessed with aerospace",
+      "is trying to get into running",
+      "believes in strategic planning and decisive action"
     ];
     let partIndex = 0;
     let charIndex = 0;
@@ -169,7 +170,7 @@
         currentText = fullText.substring(0, charIndex);
         if (charIndex === fullText.length) {
           isDeleting = true;
-          setTimeout(type, 2000);
+          setTimeout(type, 4000);  /* linger longer */
           typingElement.textContent = currentText;
           return;
         }
@@ -179,12 +180,12 @@
         if (charIndex === 0) {
           isDeleting = false;
           partIndex = (partIndex + 1) % blurbs.length;
-          setTimeout(type, 500);
+          setTimeout(type, 1000);
           return;
         }
       }
       typingElement.textContent = currentText;
-      setTimeout(type, isDeleting ? 100 : 200);
+      setTimeout(type, isDeleting ? 50 : 80);  /* faster typing */
     }
 
     document.addEventListener('DOMContentLoaded', type);
