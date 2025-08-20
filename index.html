@@ -8,6 +8,7 @@
     /* Reset & globals */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; }
+    html { scroll-behavior: smooth; }
 
     /* Navigation Bar */
     nav {
@@ -122,6 +123,29 @@
       overflow-wrap: break-word;
     }
 
+    /* About Section */
+    #about {
+      background: #0a0a0a;
+      border-top: 2px solid #fff;
+      padding: 6rem 5% 5rem;
+    }
+    #about .about-inner {
+      max-width: 900px;
+    }
+    #about h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    #about p.lede {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      opacity: 0.95;
+    }
+    #about ul { list-style: disc; margin-left: 1.25rem; }
+    #about li { margin: 0.5rem 0; }
+    #about li ul { list-style: circle; margin-left: 1.25rem; }
+    #about a { color: #fff; text-decoration: underline; }
+
     /* Footer Bar */
     .footer {
       position: fixed;
@@ -136,6 +160,17 @@
     }
     .footer p {
       margin: 0.2rem 0;
+    }
+
+    /* Down cue */
+    .down-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 4.5rem; /* above footer */
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      opacity: 0.8;
+      user-select: none;
     }
   </style>
 </head>
@@ -155,9 +190,34 @@
   <section class="hero">
     <div class="typing-container">
       <h1>
-        <span class="static">Pierce is studying industrial and mechanical engineering at Columbia University and </span>
+        <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
         <span id="typing"></span>
       </h1>
+    </div>
+    <div class="down-cue">Scroll ↓</div>
+  </section>
+
+  <section id="about">
+    <div class="about-inner">
+      <h2>About</h2>
+      <p class="lede">Hey, I’m Pierce Bader. Here’s a bit about my background:</p>
+      <ul>
+        <li>From Seattle, now based in NYC.</li>
+        <li>Passionate about aviation, robotics, operations, and defense tech.</li>
+        <li>I’ve been building UAVs since I was 14.
+          <ul>
+            <li>Here’s the low‑cost UAV prototype I built for my high school senior project.</li>
+          </ul>
+        </li>
+        <li>I serve as the Chief Quality Control Engineer at Columbia University Airplane Club.
+          <ul>
+            <li>We placed 16th out of 200 teams at the 2025 AIAA DBF in Tucson, Arizona.</li>
+            <li>Take a look at our plane: <em>Carrier Pigeon</em>.</li>
+            <li>Our design philosophy: the simpler, the better.</li>
+            <li><a href="#projects">See more in Projects</a>.</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -206,7 +266,33 @@
       setTimeout(type, isDeleting ? 40 : 60); // faster typing & deleting
     }
 
-    document.addEventListener('DOMContentLoaded', type);
+    document.addEventListener('DOMContentLoaded', () => {
+      type();
+
+      // Auto-scroll to About when the user starts scrolling the hero
+      const hero = document.querySelector('.hero');
+      const about = document.getElementById('about');
+      let autoScrolled = false;
+
+      const triggerScroll = () => {
+        if (autoScrolled) return;
+        autoScrolled = true;
+        about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      // Wheel (desktop)
+      hero.addEventListener('wheel', (e) => {
+        if (e.deltaY > 10) triggerScroll();
+      }, { passive: true });
+
+      // Touch (mobile)
+      let startY = 0;
+      hero.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+      hero.addEventListener('touchmove', (e) => {
+        const dy = startY - e.touches[0].clientY;
+        if (dy > 10) triggerScroll();
+      }, { passive: true });
+    });
   </script>
 </body>
 </html>
