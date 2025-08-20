@@ -9,6 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; }
     html { scroll-behavior: smooth; }
+    body { min-height: 100dvh; display: flex; flex-direction: column; }
 
     /* Navigation Bar */
     nav {
@@ -73,7 +74,7 @@
     .hero {
       position: relative;
       width: 100%;
-      height: calc(100vh - 3rem); /* account for footer height */
+      height: calc(100vh - 3rem); /* visual space before footer area */
       padding-top: calc(1rem + 2rem + 2px);
       overflow: hidden;
       display: flex;
@@ -109,13 +110,11 @@
       max-width: 75%;
     }
     .typing-container h1 {
-      font-size: 3rem; /* smaller text */
+      font-size: 3rem;
       line-height: 1.2;
       margin-bottom: 0;
     }
-    .typing-container .static {
-      display: inline;
-    }
+    .typing-container .static { display: inline; }
     .typing-container #typing {
       display: inline;
       border-right: 4px solid #fff;
@@ -127,40 +126,35 @@
     #about {
       background: #0a0a0a;
       border-top: 2px solid #fff;
-      padding: 6rem 5% 8rem; /* extra bottom space so footer doesn't overlap */
+      padding: 6rem 5% 5rem;
     }
-    #about .about-inner { max-width: 900px; }
+    #about .about-inner { max-width: 1000px; margin-right: auto; }
     #about h2 { font-size: 2.75rem; margin-bottom: 1.25rem; }
     #about p.lede { font-size: 1.3rem; margin-bottom: 1.5rem; opacity: 0.95; line-height: 1.9; }
-    #about ul { list-style: disc; margin-left: 1.5rem; }
-    #about li {
-      margin: 0.75rem 0; /* more vertical space */
-      font-size: 1.15rem; /* larger body text */
-      line-height: 1.9;   /* increased line spacing */
+
+    .about-cards { display: grid; gap: 1.25rem; max-width: 900px; }
+    .about-card {
+      background: rgba(179, 0, 0, 0.18); /* translucent red */
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      backdrop-filter: blur(2px);
     }
-    #about li ul { list-style: circle; margin-left: 1.25rem; }
+    .about-card ul { list-style: disc; margin-left: 1.35rem; }
+    .about-card li { margin: 0.75rem 0; font-size: 1.15rem; line-height: 1.9; }
+    .about-card li ul { list-style: circle; margin-left: 1.1rem; }
     #about a { color: #fff; text-decoration: underline; }
 
-    /* Footer Bar (only visible at page bottom) */
+    /* Footer Bar (planted at page bottom) */
     .footer {
-      position: fixed;
-      bottom: 0;
+      margin-top: auto; /* push to bottom when content is short */
       width: 100%;
       background-color: #000;
       text-align: center;
       padding: 0.5rem 0;
       color: #fff;
       font-size: 0.9rem;
-      z-index: 100;
-      opacity: 0;
-      transform: translateY(100%);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      pointer-events: none; /* ignore clicks when hidden */
-    }
-    .footer.footer--visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+      border-top: 2px solid #fff;
     }
     .footer p { margin: 0.2rem 0; }
 
@@ -168,7 +162,7 @@
     .down-cue {
       position: absolute;
       left: 50%;
-      bottom: 4.5rem; /* above footer */
+      bottom: 4.5rem; /* visually above where footer would be */
       transform: translateX(-50%);
       font-size: 0.95rem;
       opacity: 0.9;
@@ -179,6 +173,10 @@
       border: 1px solid #fff;
       border-radius: 999px; /* pill shape */
       letter-spacing: 0.02em;
+    }
+
+    @media (min-width: 900px) {
+      .about-cards { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -195,39 +193,53 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="typing-container">
-      <h1>
-        <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
-        <span id="typing"></span>
-      </h1>
-    </div>
-    <div class="down-cue">Scroll ↓</div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="typing-container">
+        <h1>
+          <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
+          <span id="typing"></span>
+        </h1>
+      </div>
+      <div class="down-cue">Scroll ↓</div>
+    </section>
 
-  <section id="about">
-    <div class="about-inner">
-      <h2>About</h2>
-      <p class="lede">Hey, I’m Pierce Bader. Here’s a bit about my background:</p>
-      <ul>
-        <li>From Seattle, now based in NYC.</li>
-        <li>Passionate about aviation, robotics, operations, and defense tech.</li>
-        <li>I’ve been building UAVs since I was 14.
-          <ul>
-            <li>Here’s the low‑cost UAV prototype I built for my high school senior project.</li>
-          </ul>
-        </li>
-        <li>I serve as the Chief Quality Control Engineer at Columbia University Airplane Club.
-          <ul>
-            <li>We placed 16th out of 200 teams at the 2025 AIAA DBF in Tucson, Arizona.</li>
-            <li>Take a look at our plane: <em>Carrier Pigeon</em>.</li>
-            <li>Our design philosophy: the simpler, the better.</li>
-            <li><a href="#projects">See more in Projects</a>.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <section id="about">
+      <div class="about-inner">
+        <h2>About</h2>
+        <p class="lede">Hey, I’m Pierce Bader. Here’s a bit about my background:</p>
+
+        <div class="about-cards">
+          <!-- Card 1: first three bullets -->
+          <div class="about-card">
+            <ul>
+              <li>From Seattle, now based in NYC.</li>
+              <li>Passionate about aviation, robotics, operations, and defense tech.</li>
+              <li>I’ve been building UAVs since I was 14.
+                <ul>
+                  <li>Here’s the low‑cost UAV prototype I built for my high school senior project.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: final bullet and subpoints -->
+          <div class="about-card">
+            <ul>
+              <li>I serve as the Chief Quality Control Engineer at Columbia University Airplane Club.
+                <ul>
+                  <li>We placed 16th out of 200 teams at the 2025 AIAA DBF in Tucson, Arizona.</li>
+                  <li>Take a look at our plane: <em>Carrier Pigeon</em>.</li>
+                  <li>Our design philosophy: the simpler, the better.</li>
+                  <li><a href="#projects">See more in Projects</a>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer" id="site-footer">
     <p>&copy; 2025 Pierce Bader</p>
@@ -300,20 +312,6 @@
         const dy = startY - e.touches[0].clientY;
         if (dy > 10) triggerScroll();
       }, { passive: true });
-
-      // Footer visibility at page bottom
-      const footer = document.getElementById('site-footer');
-      const toggleFooter = () => {
-        const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2; // threshold
-        if (atBottom) {
-          footer.classList.add('footer--visible');
-        } else {
-          footer.classList.remove('footer--visible');
-        }
-      };
-      window.addEventListener('scroll', toggleFooter, { passive: true });
-      window.addEventListener('resize', toggleFooter);
-      toggleFooter(); // initialize
     });
   </script>
 </body>
