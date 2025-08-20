@@ -127,26 +127,21 @@
     #about {
       background: #0a0a0a;
       border-top: 2px solid #fff;
-      padding: 6rem 5% 5rem;
+      padding: 6rem 5% 8rem; /* extra bottom space so footer doesn't overlap */
     }
-    #about .about-inner {
-      max-width: 900px;
+    #about .about-inner { max-width: 900px; }
+    #about h2 { font-size: 2.75rem; margin-bottom: 1.25rem; }
+    #about p.lede { font-size: 1.3rem; margin-bottom: 1.5rem; opacity: 0.95; line-height: 1.9; }
+    #about ul { list-style: disc; margin-left: 1.5rem; }
+    #about li {
+      margin: 0.75rem 0; /* more vertical space */
+      font-size: 1.15rem; /* larger body text */
+      line-height: 1.9;   /* increased line spacing */
     }
-    #about h2 {
-      font-size: 2.25rem;
-      margin-bottom: 1rem;
-    }
-    #about p.lede {
-      font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      opacity: 0.95;
-    }
-    #about ul { list-style: disc; margin-left: 1.25rem; }
-    #about li { margin: 0.5rem 0; }
     #about li ul { list-style: circle; margin-left: 1.25rem; }
     #about a { color: #fff; text-decoration: underline; }
 
-    /* Footer Bar */
+    /* Footer Bar (only visible at page bottom) */
     .footer {
       position: fixed;
       bottom: 0;
@@ -157,20 +152,33 @@
       color: #fff;
       font-size: 0.9rem;
       z-index: 100;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none; /* ignore clicks when hidden */
     }
-    .footer p {
-      margin: 0.2rem 0;
+    .footer.footer--visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
+    .footer p { margin: 0.2rem 0; }
 
-    /* Down cue */
+    /* Down cue (pill) */
     .down-cue {
       position: absolute;
       left: 50%;
       bottom: 4.5rem; /* above footer */
       transform: translateX(-50%);
-      font-size: 0.9rem;
-      opacity: 0.8;
+      font-size: 0.95rem;
+      opacity: 0.9;
       user-select: none;
+      background: #000;
+      color: #fff;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #fff;
+      border-radius: 999px; /* pill shape */
+      letter-spacing: 0.02em;
     }
   </style>
 </head>
@@ -221,7 +229,7 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="site-footer">
     <p>&copy; 2025 Pierce Bader</p>
     <p>ptb2121@columbia.edu</p>
     <p>made in the mudd basement by a team of highly trained pigeons</p>
@@ -292,6 +300,20 @@
         const dy = startY - e.touches[0].clientY;
         if (dy > 10) triggerScroll();
       }, { passive: true });
+
+      // Footer visibility at page bottom
+      const footer = document.getElementById('site-footer');
+      const toggleFooter = () => {
+        const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2; // threshold
+        if (atBottom) {
+          footer.classList.add('footer--visible');
+        } else {
+          footer.classList.remove('footer--visible');
+        }
+      };
+      window.addEventListener('scroll', toggleFooter, { passive: true });
+      window.addEventListener('resize', toggleFooter);
+      toggleFooter(); // initialize
     });
   </script>
 </body>
