@@ -31,7 +31,7 @@
     .typing-container #typing { display: inline; border-right: 4px solid #fff; white-space: normal; overflow-wrap: break-word; animation: caret 1s steps(1) infinite; }
     @keyframes caret { 50% { border-color: transparent; } }
 
-    /* About full screen */
+    /* About full screen, left justified, with image */
     #about { 
       background: #0a0a0a; 
       border-top: 2px solid #fff; 
@@ -39,8 +39,10 @@
       min-height: 100vh; 
       display: flex; 
       align-items: center; 
+      justify-content: space-between; 
+      gap: 2rem;
     }
-    #about .about-inner { max-width: 800px; margin: 0 auto; }
+    #about .about-inner { flex: 1; max-width: 600px; text-align: left; }
     #about h2 { font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 1rem; }
     .timeline { border-left: 2px solid #fff; padding-left: 1.2rem; position: relative; }
     .timeline-event { margin-bottom: 1.9rem; position: relative; }
@@ -49,6 +51,18 @@
     .timeline-event p { font-size: 1rem; line-height: 1.35; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .timeline-event ul { margin-left: 1rem; list-style: disc; }
     .timeline-event li { font-size: 0.95rem; line-height: 1.35; margin: 0.2rem 0; }
+
+    #about .about-image {
+      flex: 1;
+      max-width: 400px;
+    }
+    #about .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      object-fit: cover;
+    }
 
     /* Projects */
     #projects { 
@@ -167,6 +181,9 @@
           </div>
         </div>
       </div>
+      <div class="about-image">
+        <img src="about-placeholder.jpg" alt="About section placeholder">
+      </div>
     </section>
 
     <!-- Projects Section -->
@@ -221,7 +238,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       type();
 
-      // Force About button scroll to top of section
       document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
