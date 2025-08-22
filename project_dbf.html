@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIAA DBF — Autonomous Glider & Electrical Lead</title>
+  <style>
+    :root { --bg:#000; --fg:#fff; --muted:#c9c9c9; --accent:#0099ff; --surface:#070707; --card:#0c0c0c; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    main{max-width:1120px;margin:0 auto;padding:1rem 1.25rem 3rem}
+    section{padding:1.5rem 0}
+    .surface{background:var(--surface);border:1px solid #1b1b1b;border-radius:18px;padding:1.25rem;box-shadow:0 0 0 1px #111 inset, 0 10px 30px rgba(0,0,0,.45)}
+
+    h1{font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.1;margin:.4rem 0 .75rem}
+    h2{font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.2;margin:0 0 .8rem}
+    p{margin:.5rem 0;color:#e9e9e9}
+    .muted{color:var(--muted)}
+
+    .grid{display:grid;gap:1rem}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;align-items:center}
+    .kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:.82rem}
+
+    .badge{display:inline-block;background:#0f0f0f;border:1px solid #222;border-radius:999px;padding:.35rem .7rem;font-size:.85rem;color:#e2e2e2;margin-right:.4rem}
+
+    .placeholder{display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;border:1px dashed #2a2a2a;border-radius:16px;background:#0a0a0a;color:#9a9a9a;font-size:.95rem}
+    .caption{font-size:.9rem;color:#bdbdbd;margin-top:.35rem;text-align:center}
+
+    .back{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #1f1f1f;background:#0b0b0b;border-radius:999px;padding:.5rem .9rem;color:#eaeaea}
+    .back span{font-size:1.1rem}
+
+    @media (max-width: 900px){
+      .hero, .grid.cols-4{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Back to projects -->
+    <p><a class="back" href="index.html#projects"><span>←</span> Back to Projects</a></p>
+
+    <!-- HERO / SUMMARY -->
+    <section id="overview">
+      <div class="surface hero">
+        <div>
+          <div class="kicker">AIAA Design/Build/Fly</div>
+          <h1>Autonomous GPS‑Homing Glider — Electrical Subteam Lead</h1>
+          <p>
+            For the 2025 AIAA DBF challenge in Tucson, AZ, I led the <strong>Electrical</strong> subteam. I was responsible for
+            developing an <strong>autonomous GPS‑homing glider</strong> and packaging its avionics into the airframe of an <strong>off‑the‑shelf toy R/C plane</strong> for reliable deployment and recovery.
+          </p>
+          <p><span class="badge">16th of ~200 teams</span> <span class="badge">Tucson, Arizona</span></p>
+        </div>
+        <div>
+          <div class="placeholder">Hero image placeholder — DBF aircraft</div>
+          <div class="caption">Add an in‑flight or pitside photo here.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROLE & SYSTEMS -->
+    <section id="role">
+      <div class="surface">
+        <h2>What I Built</h2>
+        <div class="grid cols-2">
+          <div>
+            <p><strong>Autonomous glider avionics:</strong> Integrated GPS receiver, flight controller, and power distribution; implemented return‑to‑home logic and failsafes for autonomous homing after release.</p>
+            <p><strong>Airframe integration:</strong> Miniaturized and secured electronics within a commercial toy R/C fuselage to meet DBF mass and volume constraints while maintaining serviceability.</p>
+            <p><strong>Electrical leadership:</strong> Owned wiring standards, connectorization, bench testing, and pre‑flight checklists across the vehicle.
+          </p>
+          </div>
+          <div>
+            <ul class="muted">
+              <li>GPS + magnetometer fusion for heading</li>
+              <li>Battery telemetry and brownout protection</li>
+              <li>Rapid hot‑swap harnessing for field service</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS & NEXT YEAR -->
+    <section id="results">
+      <div class="surface">
+        <h2>Results & What’s Next</h2>
+        <p>Our team placed <strong>16th out of ~200 teams</strong> at the 2025 competition in Tucson, Arizona. Following the season, I was elected to the team’s executive board as <strong>Chief Quality Control Engineer</strong>, where I’m standardizing build reviews and test cards ahead of next year’s competition in <strong>Kansas</strong>.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY PLACEHOLDERS (4) -->
+    <section id="gallery">
+      <div class="surface">
+        <h2>Gallery</h2>
+        <div class="grid cols-4">
+          <figure>
+            <div class="placeholder">Image 1 — avionics bench</div>
+            <figcaption class="caption">Electronics layout and harnessing.</figcaption>
+          </figure>
+          <figure>
+            <div class="placeholder">Image 2 — glider packaging</div>
+            <figcaption class="caption">Packaging in toy R/C fuselage.</figcaption>
+          </figure>
+          <figure>
+            <div class="placeholder">Image 3 — taxi/launch</div>
+            <figcaption class="caption">Flightline prep at DBF.</figcaption>
+          </figure>
+          <figure>
+            <div class="placeholder">Image 4 — team shot</div>
+            <figcaption class="caption">Team photo after missions.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
