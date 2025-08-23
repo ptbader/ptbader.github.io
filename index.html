@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,14 +142,47 @@
     .down-cue { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); font-size: 0.85rem; opacity: 0.92; user-select: none; background: #000; color: #fff; padding: 0.35rem 0.85rem; border: 1px solid #fff; border-radius: 999px; letter-spacing: 0.02em; }
 
     @media (prefers-reduced-motion: reduce){ html { scroll-behavior: auto; } .hero { animation: none; } #typing { animation: none; border-right: none; } }
-  
 
-/* Responsive stack for About section */
-@media (max-width: 900px) {
-  #about { gap: 1rem; flex-direction: column; }
-  #about .about-inner, #about .about-image { flex: 1 1 auto; max-width: 100%; }
-}
-</style>
+    /* Responsive stack for About section */
+    @media (max-width: 900px) {
+      #about { gap: 1rem; flex-direction: column; }
+      #about .about-inner, #about .about-image { flex: 1 1 auto; max-width: 100%; }
+    }
+
+    /* Shrinking header on smaller screens */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0.5rem 1rem; /* Shrink padding */
+      }
+
+      #about h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem); /* Adjust size to be smaller */
+      }
+
+      .nav-links a {
+        font-size: 0.9rem; /* Reduce font size for nav links */
+        padding: 0.4rem 0; /* Adjust padding */
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem; /* Adjust the gap */
+        justify-content: center;
+      }
+    }
+
+    /* Make text wrap properly in the About section */
+    @media (max-width: 600px) {
+      #about h2, .timeline-event h3 {
+        word-wrap: break-word; /* Ensure headers wrap instead of overflow */
+        white-space: normal; /* Allow the text to wrap */
+      }
+      
+      .timeline-event p {
+        white-space: normal; /* Allow paragraphs to wrap */
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -157,10 +191,7 @@
     <div class="nav-links">
       <a href="#about">About <span class="toggle">+</span></a>
       <a href="#projects">Projects <span class="toggle">+</span></a>
-      <!-- Updated: scroll to Resume section -->
       <a href="#resume">Resume <span class="toggle">+</span></a>
-      <!-- Removed Gallery link -->
-      <!-- Updated: singular & scroll -->
       <a href="#contact">Contact <span class="toggle">+</span></a>
     </div>
   </nav>
@@ -217,8 +248,10 @@
             <h3>June 2025</h3>
             <p>Joined TE Connectivity Aerospace and Defense team as a Product Engineering Intern</p>
             <ul>
-              <li>Focused on bringing Digital Light Projection 3D printing to market as reliable production solution</li>
               <li>Implemented Six Sigma development practices and saved $370,000 annually in laboratory labor costs</li>
+              <li>Focused on bringing Digital Light Projection 3D printing to market as a reliable production solution</li>
+              <li>Project quantified dimensional errors and accounted for them using a response surface</li>
+              <li>Used MiniTab to perform Design of Experiments studies, measurement system analysis, and root cause analysis</li>
             </ul>
           </div>
         </div>
@@ -228,7 +261,6 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="projects-container">
@@ -243,21 +275,18 @@
       </div>
     </section>
 
-    <!-- Resume Section (new) -->
     <section id="resume">
       <h2>Resume</h2>
       <div class="resume-actions">
         <a href="Resume.pdf" download>Download Resume (PDF)</a>
       </div>
       <div class="resume-viewer">
-        <!-- If the PDF filename differs, update "Resume.pdf" below -->
         <object data="Resume.pdf" type="application/pdf" width="100%" height="100%">
           <iframe src="Resume.pdf" width="100%" height="100%" title="Resume PDF"></iframe>
         </object>
       </div>
     </section>
 
-    <!-- Contact Section (new) -->
     <section id="contact">
       <h2>Let's Chat</h2>
       <div class="contact-list">
@@ -312,12 +341,4 @@
       const hero = document.querySelector('.hero');
       const about = document.getElementById('about');
       let autoScrolled = false;
-      const triggerScroll = () => { if (autoScrolled) return; autoScrolled = true; about.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-      hero.addEventListener('wheel', (e) => { if (e.deltaY > 10) triggerScroll(); }, { passive: true });
-      let startY = 0;
-      hero.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
-      hero.addEventListener('touchmove', (e) => { const dy = startY - e.touches[0].clientY; if (dy > 10) triggerScroll(); }, { passive: true });
-    });
-  </script>
-</body>
-</html>
+      const triggerScroll = () => { if (autoScrolled) return; auto
