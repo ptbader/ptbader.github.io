@@ -31,7 +31,7 @@
     .typing-container #typing { display: inline; border-right: 4px solid #fff; white-space: normal; overflow-wrap: break-word; animation: caret 1s steps(1) infinite; }
     @keyframes caret { 50% { border-color: transparent; } }
 
-    /* About full screen, left justified, with image */
+    /* About */
     #about { 
       background: #0a0a0a; 
       border-top: 2px solid #fff; 
@@ -40,29 +40,31 @@
       display: flex; 
       align-items: center; 
       justify-content: space-between; 
-      gap: 2rem;
+      gap: 1rem;
     }
-    #about .about-inner { flex: 1; max-width: 600px; text-align: left; }
+    #about .about-inner { flex: 0 1 55%; max-width: none; text-align: left; 
+  overflow-x: visible;
+  min-width: 0;}
     #about h2 { font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 1rem; }
-    .timeline { border-left: 2px solid #fff; padding-left: 1.2rem; position: relative; }
+    .timeline { border-left: 2px solid #fff; padding-left: 1.2rem; position: relative; 
+  width: 100%;}
     .timeline-event { margin-bottom: 1.9rem; position: relative; }
     .timeline-event::before { content: ''; position: absolute; left: -24px; top: 6px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 2px solid #fff; }
     .timeline-event h3 { font-size: 1.25rem; margin-bottom: 0.3rem; white-space: nowrap; }
-    .timeline-event p { font-size: 1rem; line-height: 1.35; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .timeline-event p {
+  font-size: 1rem;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: visible;
+}
     .timeline-event ul { margin-left: 1rem; list-style: disc; }
     .timeline-event li { font-size: 0.95rem; line-height: 1.35; margin: 0.2rem 0; }
 
-    #about .about-image {
-      flex: 1;
-      max-width: 400px;
-    }
-    #about .about-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 2px solid #fff;
-      object-fit: cover;
-    }
+    #about .about-image { flex: 0 1 45%; max-width: 560px; 
+  margin-left: 0; margin-right: 0;}
+    #about .about-image img { width: 100%; height: auto; border-radius: 12px; border: 2px solid #fff; object-fit: cover; }
 
     /* Projects */
     #projects { 
@@ -102,13 +104,51 @@
     .project-card h3 { margin: 1rem 0; font-size:1.25rem; }
     .project-card:hover { transform: translateY(-6px); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 
+    /* Resume & Contact (new) */
+    #resume, #contact {
+      background: #000;
+      border-top: 2px solid #fff;
+      padding: 4.5rem 5% 3.75rem;
+    }
+    #resume h2, #contact h2 { 
+      font-size: clamp(2rem, 3vw, 2.5rem); 
+      margin-bottom: 1.25rem; 
+      text-align: left;
+    }
+    .resume-actions { margin-bottom: 1rem; }
+    .resume-actions a {
+      display: inline-block; 
+      padding: 0.6rem 1rem; 
+      border: 1px solid #fff; 
+      border-radius: 999px; 
+      text-decoration: none; 
+      color: #fff;
+    }
+    .resume-viewer {
+      width: 100%;
+      height: 600px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+    }
+    .contact-list { font-size: 1.05rem; line-height: 1.75; }
+    .contact-list a { color: #fff; text-decoration: underline; }
+
     .footer { margin-top: auto; width: 100%; background-color: #000; text-align: center; padding: 0.4rem 0; color: #fff; font-size: 0.8rem; border-top: 2px solid #fff; }
     .footer p { margin: 0.15rem 0; }
 
     .down-cue { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); font-size: 0.85rem; opacity: 0.92; user-select: none; background: #000; color: #fff; padding: 0.35rem 0.85rem; border: 1px solid #fff; border-radius: 999px; letter-spacing: 0.02em; }
 
     @media (prefers-reduced-motion: reduce){ html { scroll-behavior: auto; } .hero { animation: none; } #typing { animation: none; border-right: none; } }
-  </style>
+  
+
+/* Responsive stack for About section */
+@media (max-width: 900px) {
+  #about { gap: 1rem; flex-direction: column; }
+  #about .about-inner, #about .about-image { flex: 1 1 auto; max-width: 100%; }
+}
+</style>
 </head>
 <body>
   <nav>
@@ -117,9 +157,11 @@
     <div class="nav-links">
       <a href="#about">About <span class="toggle">+</span></a>
       <a href="#projects">Projects <span class="toggle">+</span></a>
-      <a href="resume.html">Resume <span class="toggle">+</span></a>
-      <a href="#gallery">Gallery <span class="toggle">+</span></a>
-      <a href="#contacts">Contacts <span class="toggle">+</span></a>
+      <!-- Updated: scroll to Resume section -->
+      <a href="#resume">Resume <span class="toggle">+</span></a>
+      <!-- Removed Gallery link -->
+      <!-- Updated: singular & scroll -->
+      <a href="#contact">Contact <span class="toggle">+</span></a>
     </div>
   </nav>
 
@@ -162,10 +204,10 @@
 
           <div class="timeline-event">
             <h3>April 2025</h3>
-            <p>Traveled to Tucson AZ for 2025 AIAA Design Build Fly with Columbia Airplane Club</p>
+            <p>Traveled to Tucson, AZ for 2025 AIAA Design Build Fly with Columbia Airplane Club</p>
             <ul>
               <li>Placed 16th out of over 150 teams</li>
-              <li>We deisgned the "Carrier Pigeon" with the philosophy "simpler = better"</li>
+              <li>We designed the "Carrier Pigeon" with the philosophy "simpler = better"</li>
               <li>I personally oversaw the development of the electrical subsystem and developed an autonomous homing glider with Arduino</li>
               <li>Following competion, I was elected to the Executive Board as Chief Quality Control Engineer (CQCE)</li>
             </ul>
@@ -173,10 +215,10 @@
 
           <div class="timeline-event">
             <h3>June 2025</h3>
-            <p>Joined TE Connectivity Aerospace and Defense team as Product Engineering Intern</p>
+            <p>Joined TE Connectivity Aerospace and Defense team as a Product Engineering Intern</p>
             <ul>
               <li>Focused on bringing Digital Light Projection 3D printing to market as reliable production solution</li>
-              <li>Implimented Six Sigma development practices and saved $370,000 annually in labratory labor costs</li>
+              <li>Implemented Six Sigma development practices and saved $370,000 annually in laboratory labor costs</li>
             </ul>
           </div>
         </div>
@@ -198,6 +240,29 @@
           <img src="DBF_plane.jpeg" alt="Carrier Pigeon Aircraft">
           <h3>AIAA DBF: Carrier Pigeon</h3>
         </a>
+      </div>
+    </section>
+
+    <!-- Resume Section (new) -->
+    <section id="resume">
+      <h2>Resume</h2>
+      <div class="resume-actions">
+        <a href="Resume.pdf" download>Download Resume (PDF)</a>
+      </div>
+      <div class="resume-viewer">
+        <!-- If the PDF filename differs, update "Resume.pdf" below -->
+        <object data="Resume.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="Resume.pdf" width="100%" height="100%" title="Resume PDF"></iframe>
+        </object>
+      </div>
+    </section>
+
+    <!-- Contact Section (new) -->
+    <section id="contact">
+      <h2>Let's Chat</h2>
+      <div class="contact-list">
+        <p>Phone: <a href="tel:+14255887960">(425) 588 7960</a></p>
+        <p>Email: <a href="mailto:ptb2121@columbia.edu">ptb2121@columbia.edu</a></p>
       </div>
     </section>
   </main>
