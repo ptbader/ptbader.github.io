@@ -6,8 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Pierce Bader</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<style>* { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; }
     html { scroll-behavior: smooth; }
     body { min-height: 100dvh; display: flex; flex-direction: column; }
@@ -183,7 +182,24 @@
         white-space: normal; /* Allow paragraphs to wrap */
       }
     }
-  </style>
+  
+
+
+@media (max-width: 480px) {
+  :root { --navh: 84px; } /* keep in sync with section scroll-margin-top */
+  .hero { padding-top: var(--navh); }
+}
+
+
+/* --- Mobile hero top clipping fix (v2): adds extra space for nav + notch --- */
+@media (max-width: 540px) {
+  :root { --navh: 100px; } /* increase assumed nav height on small screens */
+  .hero { 
+    padding-top: calc(var(--navh) + env(safe-area-inset-top, 0px) + 12px);
+  }
+  /* Slightly looser line-height to avoid ascenders clipping */
+  .hero h1, .hero p, #typing { line-height: 1.25; }
+}</style>
 </head>
 <body>
 <nav>
