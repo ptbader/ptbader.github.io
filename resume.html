@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Resume</title>
   <style>
+    /* Header and footer styling copied from index.html */
     :root { --bg:#000; --fg:#fff; --muted:#c9c9c9; --accent:#0099ff; --surface:#070707; --card:#0c0c0c; }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
@@ -24,7 +25,7 @@
     .back { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid #1f1f1f; background: #0b0b0b; border-radius: 999px; padding: .5rem .9rem; color: #eaeaea; }
     .back span { font-size: 1.1rem; }
 
-    /* Style for embedded PDF */
+    /* Ensure images fit within the container */
     embed, iframe {
       width: 100%;
       height: 700px;
@@ -33,23 +34,39 @@
   </style>
 </head>
 <body>
+  <!-- Header copied from index.html -->
+  <nav>
+    <a href="#" class="logo">PTBADER</a>
+    <div class="divider"></div>
+    <div class="nav-links">
+      <a href="#about">About <span class="toggle">+</span></a>
+      <a href="#projects">Projects <span class="toggle">+</span></a>
+      <a href="resume.html">Resume <span class="toggle">+</span></a>
+      <a href="#gallery">Gallery <span class="toggle">+</span></a>
+      <a href="#contacts">Contacts <span class="toggle">+</span></a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
   <main>
-    <!-- Back to projects -->
     <p><a class="back" href="index.html#projects"><span>←</span> Back to Projects</a></p>
 
-    <!-- HERO / SUMMARY -->
+    <!-- Resume Section -->
     <section id="overview">
       <div class="surface">
         <h1>My Resume</h1>
-        <p>Here you can view and download my resume for the 2025 internship opportunities.</p>
-
-        <!-- Embed PDF -->
         <embed src="resumes/resume.pdf" type="application/pdf" />
-        
-        <!-- Download Link -->
         <p><a href="resumes/resume.pdf" download class="back">Download Resume</a></p>
       </div>
     </section>
   </main>
+
+  <!-- Footer copied from index.html -->
+  <footer class="footer" id="site-footer">
+    <p>&copy; 2025 Pierce Bader</p>
+    <p><a href="mailto:ptb2121@columbia.edu" style="color:#fff;">ptb2121@columbia.edu</a></p>
+    <p>Made in the Mudd basement by a team of highly trained pigeons.</p>
+  </footer>
+
 </body>
 </html>
