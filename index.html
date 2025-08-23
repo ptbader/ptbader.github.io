@@ -303,40 +303,60 @@
   </footer>
 
   <script>
-    const blurbs = [
-      "is building UAVs.",
-      "wants to develop the future of aviation.",
-      "is obsessed with aerospace.",
-      "is trying to get into running.",
-      "thinks the attack helicopter is going to be replaced by UAVs",
-      "believes in strategic planning and decisive action."
-    ];
-    let partIndex = 0, charIndex = 0, isDeleting = false, currentText = '';
-    const typingElement = document.getElementById('typing');
+  // --- Typing config ---
+  const blurbs = [
+    "is building UAVs.",
+    "wants to develop the future of aviation.",
+    "is obsessed with aerospace.",
+    "is trying to get into running.",
+    "thinks the attack helicopter is going to be replaced by UAVs",
+    "believes in strategic planning and decisive action."
+  ];
 
-    function type() {
-      const fullText = blurbs[partIndex];
-      if (!isDeleting) {
-        charIndex++;
-        currentText = fullText.substring(0, charIndex);
-        typingElement.textContent = currentText;
-        if (charIndex === fullText.length) { isDeleting = true; setTimeout(type, 1500); return; }
-      } else {
-        charIndex--;
-        currentText = fullText.substring(0, charIndex);
-        typingElement.textContent = currentText;
-        if (charIndex === 0) { isDeleting = false; partIndex = (partIndex + 1) % blurbs.length; setTimeout(type, 600); return; }
+  let partIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function runTypingLoop(el) {
+    const fullText = blurbs[partIndex] || "";
+    if (!isDeleting) {
+      charIndex++;
+      el.textContent = fullText.substring(0, charIndex);
+      if (charIndex === fullText.length) {
+        isDeleting = true;
+        setTimeout(() => runTypingLoop(el), 1500);
+        return;
       }
-      setTimeout(type, isDeleting ? 40 : 60);
+    } else {
+      charIndex--;
+      el.textContent = fullText.substring(0, charIndex);
+      if (charIndex === 0) {
+        isDeleting = false;
+        partIndex = (partIndex + 1) % blurbs.length;
+        setTimeout(() => runTypingLoop(el), 600);
+        return;
+      }
     }
+    setTimeout(() => runTypingLoop(el), isDeleting ? 40 : 60);
+  }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      type();
+  document.addEventListener("DOMContentLoaded", () => {
+    // Start typing if the element exists
+    const typingEl = document.getElementById("typing");
+    if (typingEl) runTypingLoop(typingEl);
 
-      document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Smooth-scroll for header links (About / Projects / Resume / Contact)
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href").slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
+    });
+  });
 
       const hero = document.querySelector('.hero');
       const about = document.getElementById('about');
