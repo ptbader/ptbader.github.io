@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pierce Bader</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pierce Bader</title>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; }
     html { scroll-behavior: smooth; }
@@ -142,177 +141,165 @@
     .down-cue { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); font-size: 0.85rem; opacity: 0.92; user-select: none; background: #000; color: #fff; padding: 0.35rem 0.85rem; border: 1px solid #fff; border-radius: 999px; letter-spacing: 0.02em; }
 
     @media (prefers-reduced-motion: reduce){ html { scroll-behavior: auto; } .hero { animation: none; } #typing { animation: none; border-right: none; } }
-  
 
-/* Responsive stack for About section */
-@media (max-width: 900px) {
-  #about { gap: 1rem; flex-direction: column; }
-  #about .about-inner, #about .about-image { flex: 1 1 auto; max-width: 100%; }
-}
+    /* Responsive stack for About section */
+    @media (max-width: 900px) {
+      #about { gap: 1rem; flex-direction: column; }
+      #about .about-inner, #about .about-image { flex: 1 1 auto; max-width: 100%; }
+    }
 
-@media (max-width: 900px) {
-  .projects-container {
-    flex-direction: column;
-  }
-  .project-card {
-    max-width: 100%;
-  }
-}
+    /* Shrinking header on smaller screens */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0.5rem 1rem; /* Shrink padding */
+      }
 
-@media (min-width: 360px) and (max-width: 414px) {
-  .projects-container {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-  .project-card {
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-  .about-inner {
-    padding: 1rem 5%;
-  }
-  .about-image img {
-    width: 100%;
-    height: auto;
-  }
-  .footer {
-    font-size: 0.7rem;
-    padding: 1rem 0;
-  }
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-</style>
+      #about h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem); /* Adjust size to be smaller */
+      }
+
+      .nav-links a {
+        font-size: 0.9rem; /* Reduce font size for nav links */
+        padding: 0.4rem 0; /* Adjust padding */
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem; /* Adjust the gap */
+        justify-content: center;
+      }
+    }
+
+    /* Make text wrap properly in the About section */
+    @media (max-width: 600px) {
+      #about h2, .timeline-event h3 {
+        word-wrap: break-word; /* Ensure headers wrap instead of overflow */
+        white-space: normal; /* Allow the text to wrap */
+      }
+      
+      .timeline-event p {
+        white-space: normal; /* Allow paragraphs to wrap */
+      }
+    }
+  </style>
 </head>
 <body>
-<nav>
-<a class="logo" href="#">PTBADER</a>
-<div class="divider"></div>
-<div class="nav-links">
-<a href="#about">About <span class="toggle">+</span></a>
-<a href="#projects">Projects <span class="toggle">+</span></a>
-<!-- Updated: scroll to Resume section -->
-<a href="#resume">Resume <span class="toggle">+</span></a>
-<!-- Removed Gallery link -->
-<!-- Updated: singular & scroll -->
-<a href="#contact">Contact <span class="toggle">+</span></a>
-</div>
-</nav>
-<main>
-<section class="hero">
-<div class="typing-container">
-<h1>
-<span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
-<span id="typing"></span>
-</h1>
-</div>
-<div class="down-cue">Scroll ↓</div>
-</section>
-<section id="about">
-<div class="about-inner">
-<h2>About</h2>
-<div class="timeline">
-<p style="margin:0 0 1rem 0; font-size:0.9rem; opacity:.95; white-space:nowrap;">From Seattle, now based in NYC.</p>
-<div class="timeline-event">
-<h3>June 2024</h3>
-<p>Graduated Summa Cum Laude from The Bear Creek School in Redmond WA</p>
-<ul>
-<li>Built a low cost UAV demonstrator for senior project <a href="#projects">See more</a></li>
-<li>Started building UAVs and model rockets at age 14</li>
-</ul>
-</div>
-<div class="timeline-event">
-<h3>September 2024</h3>
-<p>Enrolled at Columbia University Fu Foundation School of Engineering</p>
-<ul>
-<li>SEAS Class of 2028</li>
-<li>Studying Mechanical Engineering</li>
-<li>Joined the Airplane Club as Electrical Subteam Lead</li>
-<li>Passionate about airborne robotics, aviation, and defense-tech</li>
-</ul>
-</div>
-<div class="timeline-event">
-<h3>April 2025</h3>
-<p>Traveled to Tucson, AZ for 2025 AIAA Design Build Fly with Columbia Airplane Club</p>
-<ul>
-<li>Placed 16th out of over 150 teams</li>
-<li>We designed the "Carrier Pigeon" with the philosophy "simpler = better"</li>
-<li>I personally oversaw the development of the electrical subsystem and developed an autonomous homing glider with Arduino</li>
-<li>Following competition, I was elected to the Executive Board as Chief Quality Control Engineer (CQCE)</li>
-</ul>
-</div>
-<div class="timeline-event">
-<h3>June 2025</h3>
-<p>Joined TE Connectivity Aerospace and Defense team as a Product Engineering Intern</p>
-<ul>
-<li>Focused on bringing Digital Light Projection 3D printing to market as reliable production solution</li>
-<li>Implemented Six Sigma development practices and saved $370,000 annually in laboratory labor costs</li>
-</ul>
-</div>
+  <nav>
+    <a href="#" class="logo">PTBADER</a>
+    <div class="divider"></div>
+    <div class="nav-links">
+      <a href="#about">About <span class="toggle">+</span></a>
+      <a href="#projects">Projects <span class="toggle">+</span></a>
+      <a href="#resume">Resume <span class="toggle">+</span></a>
+      <a href="#contact">Contact <span class="toggle">+</span></a>
+    </div>
+  </nav>
 
-<div class="timeline-event">
-<h3>June 2025</h3>
-<p>Joined TE Connectivity Aerospace and Defense team as a Product Engineering Intern</p>
-<ul>
-<li>Focused on bringing Digital Light Projection 3D printing to market as reliable production solution</li>
-<li>Implemented Six Sigma development practices and saved $370,000 annually in laboratory labor costs</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="about-image">
-<img alt="About section placeholder" src="senior_photo.jpg"/>
-</div>
-</section>
-<!-- Projects Section -->
-<section id="projects">
-<h2>Projects</h2>
-<div class="projects-container">
-<a class="project-card" href="project-uav.html">
-<img alt="Low-cost UAV Project" src="low_cost.jpeg"/>
-<h3>Low-cost UAV Demonstrator</h3>
-</a>
-<a class="project-card" href="project-dbf-carrier-pigeon.html">
-<img alt="Carrier Pigeon Aircraft" src="DBF_plane.jpeg"/>
-<h3>AIAA DBF: Carrier Pigeon</h3>
-</a>
+  <main>
+    <section class="hero">
+      <div class="typing-container">
+        <h1>
+          <span class="static">Pierce is studying mechanical engineering at Columbia University and </span>
+          <span id="typing"></span>
+        </h1>
+      </div>
+      <div class="down-cue">Scroll ↓</div>
+    </section>
 
-<a class="project-card" href="project-te-connectivity.html">
-<img alt="TE Connectivity Internship Project" src="TE_connectivity_internship.jpg"/>
-<h3>TE Connectivity Aerospace &amp; Defense Engineering Internship</h3>
-</a>
-</div>
-</section>
-<!-- Resume Section (new) -->
-<section id="resume">
-<h2>Resume</h2>
-<div class="resume-actions">
-<a download="" href="Resume.pdf">Download Resume (PDF)</a>
-</div>
-<div class="resume-viewer">
-<!-- If the PDF filename differs, update "Resume.pdf" below -->
-<object data="Resume.pdf" height="100%" type="application/pdf" width="100%">
-<iframe height="100%" src="Resume.pdf" title="Resume PDF" width="100%"></iframe>
-</object>
-</div>
-</section>
-<!-- Contact Section (new) -->
-<section id="contact">
-<h2>Let's Chat</h2>
-<div class="contact-list">
-<p>Phone: <a href="tel:+14255887960">(425) 588 7960</a></p>
-<p>Email: <a href="mailto:ptb2121@columbia.edu">ptb2121@columbia.edu</a></p>
-</div>
-</section>
-</main>
-<footer class="footer" id="site-footer">
-<p>© 2025 Pierce Bader</p>
-<p><a href="mailto:ptb2121@columbia.edu" style="color:#fff;">ptb2121@columbia.edu</a></p>
-<p>Made in the Mudd basement by a team of highly trained pigeons.</p>
-</footer>
-<script>
+    <section id="about">
+      <div class="about-inner">
+        <h2>About</h2>
+        <div class="timeline">
+          <p style="margin:0 0 1rem 0; font-size:0.9rem; opacity:.95; white-space:nowrap;">From Seattle, now based in NYC.</p>
+
+          <div class="timeline-event">
+            <h3>June 2024</h3>
+            <p>Graduated Summa Cum Laude from The Bear Creek School in Redmond WA</p>
+            <ul>
+              <li>Built a low cost UAV demonstrator for senior project <a href="#projects">See more</a></li>
+              <li>Started building UAVs and model rockets at age 14</li>
+            </ul>
+          </div>
+
+          <div class="timeline-event">
+            <h3>September 2024</h3>
+            <p>Enrolled at Columbia University Fu Foundation School of Engineering</p>
+            <ul>
+              <li>SEAS Class of 2028</li>
+              <li>Studying Mechanical Engineering</li>
+              <li>Joined the Airplane Club as Electrical Subteam Lead</li>
+              <li>Passionate about airborne robotics, aviation, and defense-tech</li>
+            </ul>
+          </div>
+
+          <div class="timeline-event">
+            <h3>April 2025</h3>
+            <p>Traveled to Tucson, AZ for 2025 AIAA Design Build Fly with Columbia Airplane Club</p>
+            <ul>
+              <li>Placed 16th out of over 150 teams</li>
+              <li>We designed the "Carrier Pigeon" with the philosophy "simpler = better"</li>
+              <li>I personally oversaw the development of the electrical subsystem and developed an autonomous homing glider with Arduino</li>
+              <li>Following competition, I was elected to the Executive Board as Chief Quality Control Engineer (CQCE)</li>
+            </ul>
+          </div>
+
+          <div class="timeline-event">
+            <h3>June 2025</h3>
+            <p>Joined TE Connectivity Aerospace and Defense team as a Product Engineering Intern</p>
+            <ul>
+              <li>Focused on bringing Digital Light Projection 3D printing to market as reliable production solution</li>
+              <li>Implemented Six Sigma development practices and saved $370,000 annually in laboratory labor costs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="senior_photo.jpg" alt="About section placeholder">
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-container">
+        <a href="project-uav.html" class="project-card">
+          <img src="low_cost.jpeg" alt="Low-cost UAV Project">
+          <h3>Low-cost UAV Demonstrator</h3>
+        </a>
+        <a href="project-dbf-carrier-pigeon.html" class="project-card">
+          <img src="DBF_plane.jpeg" alt="Carrier Pigeon Aircraft">
+          <h3>AIAA DBF: Carrier Pigeon</h3>
+        </a>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Resume</h2>
+      <div class="resume-actions">
+        <a href="Resume.pdf" download>Download Resume (PDF)</a>
+      </div>
+      <div class="resume-viewer">
+        <object data="Resume.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="Resume.pdf" width="100%" height="100%" title="Resume PDF"></iframe>
+        </object>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Let's Chat</h2>
+      <div class="contact-list">
+        <p>Phone: <a href="tel:+14255887960">(425) 588 7960</a></p>
+        <p>Email: <a href="mailto:ptb2121@columbia.edu">ptb2121@columbia.edu</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="site-footer">
+    <p>&copy; 2025 Pierce Bader</p>
+    <p><a href="mailto:ptb2121@columbia.edu" style="color:#fff;">ptb2121@columbia.edu</a></p>
+    <p>Made in the Mudd basement by a team of highly trained pigeons.</p>
+  </footer>
+
+  <script>
     const blurbs = [
       "is building UAVs.",
       "wants to develop the future of aviation.",
@@ -351,12 +338,4 @@
       const hero = document.querySelector('.hero');
       const about = document.getElementById('about');
       let autoScrolled = false;
-      const triggerScroll = () => { if (autoScrolled) return; autoScrolled = true; about.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-      hero.addEventListener('wheel', (e) => { if (e.deltaY > 10) triggerScroll(); }, { passive: true });
-      let startY = 0;
-      hero.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
-      hero.addEventListener('touchmove', (e) => { const dy = startY - e.touches[0].clientY; if (dy > 10) triggerScroll(); }, { passive: true });
-    });
-  </script>
-</body>
-</html>
+      const triggerScroll = () => { if (autoScrolled) return; auto
