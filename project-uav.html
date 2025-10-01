@@ -82,17 +82,17 @@
           <div>
             <div class="kicker">Educational UAV • Open Classroom Testbed</div>
             <h1>Demonstrating Aircraft Dynamics with a Low‑Cost UAV</h1>
-            <p class="lead">This project delivers a foamboard R/C aircraft built from hobby‑grade parts and everyday materials, engineered to be a <strong>hands‑on testbed</strong> for aircraft dynamics demonstrations and <strong>educational experiments</strong>.</p>
+            <p class="lead">Built a foamboard R/C aircraft from hobby‑grade parts and everyday materials, engineered to be a <strong>hands‑on testbed</strong> for and educational experiments.</p>
             <div class="badges" aria-label="Key points">
               <span class="badge">~1.6 m wingspan</span>
               <span class="badge">Foamboard airframe</span>
               <span class="badge">4‑servo control (Pitch/Yaw/Roll×2)</span>
-              <span class="badge">Iterate → test → teach</span>
+              <span class="badge">iterate → test → teach</span>
             </div>
           </div>
           <div>
-            <img src="low_cost.jpeg" alt="UAV in flight" class="rounded" />
-            <div class="caption">Completed design.</div>
+            <img src="low_cost.jpeg" alt="Ground Test" class="rounded" />
+            <div class="caption">Smile! Ground Test</div>
           </div>
         </div>
       </div>
@@ -102,19 +102,13 @@
     <section id="specs">
       <div class="surface">
         <h2>Aircraft Overview & Specifications</h2>
-        <p class="muted">A practical platform for AP Physics‑adjacent demos and collegiate outreach.</p>
+        <p class="muted">Built both as a proof-of-concept and a useful classroom demonstration for AP Physics 1 students.</p>
         <div class="specs">
+    
           <div class="spec">
-            <h3>Recommended (reference plan)</h3>
+            <h3>Demonstrator MK.1</h3>
             <table>
-              <tr><td class="label">Motor</td><td>~1000 kV class</td></tr>
-              <tr><td class="label">Wingspan</td><td>≈ 1.41 m</td></tr>
-            </table>
-          </div>
-          <div class="spec">
-            <h3>Actual Build</h3>
-            <table>
-              <tr><td class="label">Motor</td><td>~2250 kV class</td></tr>
+              <tr><td class="label">Motor</td><td>~2250 kV</td></tr>
               <tr><td class="label">Wingspan</td><td>≈ 1.66 m</td></tr>
             </table>
           </div>
@@ -122,11 +116,11 @@
         <div class="grid cols-2" style="margin-top:1rem">
           <div class="card">
             <h3>Airframe & Materials</h3>
-            <p>Foamboard construction with hot‑glue assembly; planform derived from community resources (e.g., JoyPlanes forum). Lightweight structure enables rapid iteration and low‑risk field testing.</p>
+            <p>Scored foamboard, balsa and hot‑glue assembly; planform derived from JoyPlanes. Cheap and lightweight structure enables rapid iteration and low‑risk field testing.</p>
           </div>
           <div class="card">
             <h3>Controls & Actuation</h3>
-            <p>Four‑servo setup providing elevator (pitch), rudder (yaw), and dual ailerons (roll). Layout supports standard trainer‑style flight as well as extended experiments in stability and control.</p>
+            <p>Four‑servo setup providing elevator (pitch), rudder (yaw), and dual ailerons (roll). Used Spektrum motor, ESC, reciever, and DX6E transmitter.</p>
           </div>
         </div>
       </div>
@@ -135,23 +129,23 @@
     <!-- BUILD TIMELINE / LESSONS -->
     <section id="timeline">
       <div class="surface">
-        <h2>Build Timeline & Key Lessons</h2>
+        <h2>Build Timeline</h2>
         <div class="timeline">
           <div class="step">
-            <strong>Step 1 — Learn to Fly</strong>
-            <p>Initial proficiency with R/C piloting to reduce early test risk and improve the feedback loop between design and flight behavior.</p>
+            <strong>Step 1 — Validate Controls</strong>
+            <p>Build on my initial proficiency with R/C piloting and gain by practicing with an Aeroscout 2.1 on the DX6E.</p>
           </div>
           <div class="step">
             <strong>Step 2 — Airframe Fabrication</strong>
-            <p>Foamboard fuselage and wing built from forum schematics; rapid assembly with hot glue to prioritize iteration speed.</p>
+            <p>Foamboard fuselage and wing built from forum schematics. Correct initial errors in schematic and lengthen design wingspan by 0.2m.</p>
           </div>
           <div class="step">
             <strong>Step 3 — Electrics Integration</strong>
-            <p>Powertrain and control electronics installed; four‑servo control chosen to fully articulate pitch, yaw, and roll (×2 ailerons).</p>
+            <p>Powerplant and control electronics installed; four‑servo control chosen to fully articulate pitch, yaw, and roll (×2 ailerons).</p>
           </div>
           <div class="step">
             <strong>Step 4 — Test Flight #1: Diagnose</strong>
-            <p>Unstable first attempts revealed core physics issues: <em>mass</em> too high and <em>insufficient lift</em>.</p>
+            <p>Unstable first attempts revealed design instability: insufficent lift generated from slightly asymetrical wings due to errors in the manufacturing process.</p>
           </div>
           <div class="step">
             <strong>Step 4.5 — Weight Reduction</strong>
@@ -159,16 +153,13 @@
           </div>
           <div class="step">
             <strong>Step 5 — Test Flight #2: Power & Balance</strong>
-            <p>Upgraded motor and refined wing geometry; center‑of‑gravity adjusted for better longitudinal stability.</p>
+            <p>Upgraded motor and refined wing geometry. Center‑of‑gravity adjusted for better longitudinal stability.</p>
           </div>
           <div class="step">
             <strong>Step 6 — Stable Flight Achieved</strong>
-            <p>Third round of flight tests achieved reliable, controllable flight suitable for classroom demos.</p>
+            <p>Third round of flight tests achieved reliable, controllable flight and achieved project goal.</p>
           </div>
-          <div class="step">
-            <strong>Lesson Learned</strong>
-            <p>Following a plan isn’t enough—treat each flight as data. Iterate on mass, lift, balance, and thrust until the aircraft <em>teaches</em> you what it needs.</p>
-          </div>
+        
         </div>
       </div>
     </section>
@@ -183,9 +174,8 @@
             <p>Designed to make foundational ideas tangible for students in physics and introductory aerospace:</p>
             <ul>
               <li><strong>Lift & Pressure</strong> — connect Bernoulli’s principle and pressure differentials to observed wing performance.</li>
-              <li><strong>Stability & Control</strong> — demonstrate pitch, yaw, and roll coupling; explore static margin via CG shifts.</li>
+              <li><strong>Stability & Control</strong> — demonstrate pitch, yaw, and roll coupling as well as the concept of CG.</li>
               <li><strong>Power & Weight</strong> — show thrust‑to‑weight tradeoffs and effect of mass on takeoff distance and climb rate.</li>
-              <li><strong>Flight Testing</strong> — use repeatable test cards for trim flights, glide tests, and control‑response sweeps.</li>
             </ul>
           </div>
           <div class="card">
@@ -194,7 +184,7 @@
               <li><em>Angle‑of‑Attack Sweep:</em> Observe stall onset and lift curve trends with incremental elevator inputs.</li>
               <li><em>CG Shift Demo:</em> Add/remove small masses to illustrate effects on longitudinal stability and trim.</li>
               <li><em>Control Reversal Test:</em> Measure roll rate vs. aileron deflection; discuss yaw‑roll coupling.</li>
-              <li><em>Glide Tests:</em> Power‑off descents to compare L/D with different wing configurations.</li>
+          
             </ul>
             <p class="muted">All activities are designed for outdoor demos with safety buffers and spotters.</p>
           </div>
@@ -212,10 +202,7 @@
             <p>Use the UAV as a recurring lab demo: free‑body diagrams in flight, forces in coordinated turns, and real‑world measurement of velocity and acceleration with onboard or ground‑based video analysis.</p>
             <p><strong>Topics reinforced:</strong> forces, energy, motion, pressure, Bernoulli, and experimental design.</p>
           </div>
-          <div class="card">
-            <h3>Community & Outreach</h3>
-            <p>Share the excitement of flight through school demos and community events; encourage students to explore aerospace by connecting hands‑on building with the underlying science.</p>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -247,10 +234,9 @@
         <h2>Acknowledgments</h2>
         <p class="muted">Special thanks to mentors and supporters who guided the build, flight testing, and curriculum design.</p>
         <ul>
-          <li>Mr. Rogers</li>
-          <li>Janice Crew</li>
-          <li>Kaleb Shaw</li>
-          <li>Family & community supporters</li>
+          <li>Mr. Rogers from the Bear Creek School</li>
+          <li>Janice Crew from the Museum of Flight in Seattle, WA</li>
+          <li>Kaleb Shaw from UW DBF</li>
         </ul>
       </div>
     </section>
